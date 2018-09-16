@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>个人信息页面</title>
+		<style>
+			#le{color:red}
+			#leg{color:red}
+			#fiel{width:500px;}
+			#re{color:red}
+		</style>
+	</head>
+	<body id="fiel">
+		<header>请填写个人信息</header>
+		<article>
+			<form>
+				<fieldset>
+					<legend id="le">基本信息</legend>
+					姓名<input type="text" placeholder="请输入姓名" required="required" name="n" /><span id="re">*</span><br/>
+					年龄<input type="text" name="age" />
+				</fieldset><br />
+				<fieldset>
+					<legend id="leg">你想在哪里收到邮件？</legend>
+					邮箱<input  id="email" type="search" onkeyup="keydown()" autocomplete="on" placeholder="请输入邮箱" required="required" name="n1" list="names"/><span id="re">*</span>
+					<datalist id="names" class="com" onclick="fun2(i)">
+				    	<option>@qq.com</option>
+						<option>@163.com</option>
+						<option>@gmail.com</option>
+						<option>@yahoo.com.cn</option>
+						<option>@126.com</option>
+					</datalist>
+				</fieldset><br />
+				<fieldset>
+					<legend id="le">收入情况</legend>
+					月收入<select>
+						<option>20k+</option>
+						<option>21k+</option>
+						<option>22k+</option>
+					</select><br/>
+					银行卡<input type="text" name="t1" />
+					有效期<input type="date" name="date" />
+				</fieldset><br />
+				<fieldset>
+					<legend id="le">选取提交文件</legend>
+					文件<input type="file"  name="file" />
+				</fieldset><br />
+				<input type="submit" />
+			</form>
+		</article>
+	</body>
+</html>
+ <script>
+ 	var email=document.getElementById("email");
+ 	var op=document.getElementsByClassName("com")[0];
+ 	var val=op.children;
+ 	var tst=[];
+ 	for(var i=0;i<val.length;i++){
+ 		tst[i]=val[i].value;
+ 	}
+ 	function keydown(){
+ 		for(var i=0;i<val.length;i++){
+ 			val[i].value=email.value+tst[i];
+ 		}
+ 	}
+ 	function fun2(idx){
+ 		email.value=val[idx].value;
+ 		for(var j=0;j<val.length;j++){
+ 			val[j].value=parseInt(email.value)+tat[j];
+ 		}
+ 	}
+ </script>
