@@ -4,12 +4,12 @@
 		<meta charset="utf-8" />
 		<title></title>
 		<style>
-			#playaudio1{
+			/*#playaudio1{
 				margin-left:100px;
 			}
 			#playaudio2{
 				margin-left:85px
-			}
+			}*/
 		</style>
 	</head>
 	<body>
@@ -31,6 +31,10 @@
 					if(playbutton1.value=="播放"){
 						audios1.play();
 						playbutton1.value="暂停";
+						if(playbutton2.value=="暂停"){
+							audios2.pause();
+							playbutton2.value="播放"
+						}
 					}
 					else{
 						audios1.pause();
@@ -43,6 +47,10 @@
 					if(playbutton2.value=="播放"){
 						audios2.play();
 						playbutton2.value="暂停";
+						if(playbutton1.value=="暂停"){
+							audios1.pause();
+							playbutton1.value="播放";
+						}
 					}
 					else{
 						audios2.pause();
