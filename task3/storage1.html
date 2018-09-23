@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#leg{color:red;
+			}
+			#file{
+				height:300px;
+				
+			}
+			.file1{height:100px;
+			}
+			#test{
+				border:1px solid black;
+				height:80px;
+				margin-top:20px;
+				background-color:red;
+			}
+			p{text-align:center;}
+			.file1 div{float:left;
+			margin-left:20px;
+			height:40px;
+			width:30px;
+			border:1px,red;solid;
+			margin-top:20px;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<fieldset id="file">
+			<legend id="leg"><h1>页面换肤</h1></legend>
+			<fieldset class="file1">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</fieldset>
+			<div id="test">
+				<p>localStorage将数据保存在客户端本地的硬件设备上，即使浏览器被关闭了，该数据仍然存在，下次打开浏览器访问网站时仍然可以继续使用。</p>
+			</div>
+		</fieldset>
+	</body>
+</html>
+<script>
+	var col=document.getElementsByClassName("file1")[0];
+	var tet=document.getElementById("test");
+	var child=col.children;
+	for(var i=0;i<child.length;i++){
+		var color=["red","blue","yellow","pink","purple","green"];
+		child[i].style.backgroundColor=color[i];}
+	for(var i=0;i<child.length;i++){
+		child[i].index=i;
+		child[i].onclick=function(){
+			tet.style.backgroundColor=color[this.index];	
+			localStorage.setItem("bgc",color[this.index]);
+			for(var j=0;j<child.length+1;j++){
+				child[this.index].style.marginTop="10px";
+				child[j].style.marginTop="20px";
+			}
+		}
+	}
+	window.onload=function(){
+		tet.style.backgroundColor=localStorage.getItem("bgc");
+	}
+	
+</script>
+
