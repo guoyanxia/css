@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8">
+		<title></title>
+		<style>
+			#tag{
+				height:240px;
+				width:427px;
+				border:1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>上传头像</h2>
+		<div id="tag" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	</body>
+</html>
+<script>
+	function drop(ev){
+		ev.preventDefault();
+		var target =ev.dataTransfer.files[0].type;
+        if (/image\/\w+/.test(target)) {
+            let reader = new FileReader();  
+            reader.readAsDataURL(ev.dataTransfer.files[0]);
+            reader.onload = function(ev)
+	    	{
+	       var img_result=document.getElementById("tag");
+	       img_result.innerHTML = '<img src="'+this.result+'" alt=""/>'
+	    	}
+        }
+	}
+	function allowDrop(ev){
+		ev.preventDefault();
+	}
+</script>
