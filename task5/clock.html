@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			canvas{
+				border:1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas1" width="500" height="500"></canvas>
+	</body>
+	<script>
+		var canvas=document.getElementById('canvas1');
+		var cxt=canvas.getContext('2d');
+		function clear() { 
+    	cxt.clearRect(0,0,500,500);
+	}
+	function clock(){	
+		cxt.save();
+		clear();
+		cxt.beginPath();
+		cxt.arc(250,250,150,0*Math.PI,2*Math.PI);
+		cxt.strokeStyle="greenyellow";
+		cxt.lineWidth="10";
+		cxt.stroke();
+		cxt.closePath();
+		cxt.translate(250,250);
+		for(var i=0;i<60;i++){
+			cxt.rotate(6 /180*Math.PI);
+			cxt.beginPath();
+			cxt.fillStyle="black";
+			cxt.fillRect(120,0,15,5);	
+		}
+		for(var i=0;i<12;i++){
+			cxt.rotate(30/180*Math.PI);
+			cxt.beginPath();
+			cxt.fillStyle="red";
+			cxt.fillRect(115,0,20,5);
+		}
+	for (var i = 0; i<12; i++) {
+		var theta=30*(i-2)/180*Math.PI;
+        var x = 100 * Math.cos(theta);
+        var y = 100 * Math.sin(theta);
+        cxt.fillText(i+1, x, y);
+    }
+	var data = new Date();             
+	var sec = data.getSeconds()/5;           
+	var min = data.getMinutes()/5;        
+	var hour = data.getHours();  
+//	cxt.restore();
+
+//	cxt.save();
+		cxt.beginPath();
+//		cxt.translate(250,250);
+		cxt.moveTo(0,0);
+		cxt.lineTo(75*Math.cos((30*((hour-3)+(data.getMinutes()/60)) )/180*Math.PI),75*Math.sin((30*((hour-3)+(data.getMinutes()/60)))/180*Math.PI));
+		cxt.strokeStyle="purple";
+		cxt.lineWidth="5";
+		cxt.stroke();
+//	cxt.restore();
+//	cxt.save();
+		cxt.beginPath();
+//		cxt.translate(250,250);
+		cxt.moveTo(0,0);
+		cxt.lineTo(85*Math.cos(30*(min-3)/180*Math.PI),85*Math.sin(30*(min-3)/180*Math.PI));
+		cxt.strokeStyle="pink";
+		cxt.lineWidth="4";
+		cxt.stroke();
+//	cxt.restore();
+//		cxt.save();
+		cxt.beginPath();
+//		cxt.translate(250,250);
+		cxt.moveTo(0,0);
+		cxt.lineTo(90*Math.cos(30*(sec-3)/180*Math.PI),90*Math.sin(30*(sec-3)/180*Math.PI));
+		cxt.strokeStyle="red";
+		cxt.lineWidth="2";
+		cxt.stroke();
+//	cxt.restore();
+//	cxt.save();
+		cxt.beginPath();
+//		cxt.translate(250,250);
+		cxt.arc(0,0,4,0*Math.PI,2*Math.PI);
+		cxt.fillStyle="black";
+		cxt.fill();
+		cxt.stroke();
+	cxt.restore();
+		
+}
+	clock();
+	setInterval(clock,1000);
+
+	
+
+
+
+
+	
+
+		
+
+		
+ 	</script>
+</html>
